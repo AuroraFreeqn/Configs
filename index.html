@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Visual Configs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 25%, #4d4841 0%, transparent 25%),
+                radial-gradient(circle at 85% 15%, #70665b 0%, transparent 20%),
+                radial-gradient(circle at 25% 75%, #47453d 0%, transparent 22%),
+                radial-gradient(circle at 75% 85%, #5e5750 0%, transparent 28%),
+                radial-gradient(circle at 50% 50%, #7c8a94 0%, transparent 18%),
+                radial-gradient(circle at 10% 60%, #52575e 0%, transparent 24%),
+                radial-gradient(circle at 90% 40%, #798e8f 0%, transparent 20%),
+                radial-gradient(circle at 40% 10%, #4d4743 0%, transparent 16%),
+                radial-gradient(circle at 60% 90%, #423939 0%, transparent 26%);
+            filter: blur(50px);
+            animation: lightsMove 12s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(25px);
+            z-index: -1;
+        }
+
+        @keyframes lightsMove {
+            0% { 
+                transform: translate(0px, 0px) scale(1);
+                filter: blur(50px);
+            }
+            25% { 
+                transform: translate(-30px, -40px) scale(1.1);
+                filter: blur(45px);
+            }
+            50% { 
+                transform: translate(20px, -20px) scale(0.9);
+                filter: blur(55px);
+            }
+            75% { 
+                transform: translate(-15px, 30px) scale(1.05);
+                filter: blur(48px);
+            }
+            100% { 
+                transform: translate(0px, 0px) scale(1);
+                filter: blur(50px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    position: relative;
+    text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(255, 255, 255, 0.6),
+        0 0 60px rgba(255, 255, 255, 0.4),
+        0 0 80px rgba(255, 255, 255, 0.2);
+    animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    position: relative;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2);
+    animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { 
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.4),
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 30px rgba(255, 255, 255, 0.2);
+    }
+    100% { 
+        text-shadow: 
+            0 0 15px rgba(255, 255, 255, 0.6),
+            0 0 30px rgba(255, 255, 255, 0.4),
+            0 0 45px rgba(255, 255, 255, 0.3);
+    }
+}
+
+        .configs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .config-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: cardAppear 0.8s ease-out;
+            animation-fill-mode: both;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            height: 120px;
+        }
+
+        .config-card:nth-child(1) { animation-delay: 0.1s; }
+        .config-card:nth-child(2) { animation-delay: 0.2s; }
+        .config-card:nth-child(3) { animation-delay: 0.3s; }
+        .config-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .config-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+            z-index: 1;
+        }
+
+        .config-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .config-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .config-image {
+            width: 150px;
+            height: 80px;
+            background: linear-gradient(45deg, #333, #555);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .config-info {
+            flex: 1;
+            width: 100%;
+            height: 80px;
+            background: rgba(75, 75, 75, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 15px;
+            flex-shrink: 0;
+        }
+
+        .config-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: transparent;
+        }
+
+        .legit-yellow .config-title { 
+            background: linear-gradient(90deg, #ffdf86, #ffcab5, #ffdf86);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+        .legit-orange .config-title { 
+            background: linear-gradient(90deg, #ffa537, #e0ff55, #ffb964);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+        .semi-rage-blue .config-title { 
+            background: linear-gradient(90deg, #48b6ff, #68ffff, #59bdff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+        .semi-rage-red .config-title { 
+            background: linear-gradient(90deg, #ff6a6a, #354351, #ff6969);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .legit-yellow .config-image { background: linear-gradient(45deg, #ffe181, #ffd5b8); }
+        .legit-orange .config-image { background: linear-gradient(45deg, #ffaf4e, #bcff63); }
+        .semi-rage-blue .config-image { background: linear-gradient(45deg, #48b6ff, #67ffff); }
+        .semi-rage-red .config-image { background: linear-gradient(45deg, #ff6b6b, #354351); }
+
+        .config-type {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .modal.closing {
+            animation: modalFadeOut 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { 
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+            to { 
+                opacity: 1;
+                backdrop-filter: blur(15px);
+            }
+        }
+
+        @keyframes modalFadeOut {
+            from { 
+                opacity: 1;
+                backdrop-filter: blur(15px);
+            }
+            to { 
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+        }
+
+        .modal-content {
+            background: rgba(20, 20, 40, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal.closing .modal-content {
+            animation: modalSlideOut 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes modalSlideOut {
+            from {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .close-btn:hover {
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: transparent;
+        }
+
+        .modal.legit-yellow .modal-title { 
+            background: linear-gradient(90deg, #ffff99, #ffffff, #ffff99);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+        .modal.legit-orange .modal-title { 
+            background: linear-gradient(90deg, #ff8c00, #adff50, #ff8c00);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+        .modal.semi-rage-blue .modal-title { 
+            background: linear-gradient(90deg, #0099ff, #00ffff, #0099ff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+        .modal.semi-rage-red .modal-title { 
+            background: linear-gradient(90deg, #ff5959, #354351, #ff4f4f);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+        }
+
+        .screenshot-gallery {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .screenshot-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background: #222;
+        }
+
+        .screenshot {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #333, #555);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            transform: translateX(30px) scale(0.95);
+            overflow: hidden;
+        }
+
+        .screenshot.active {
+            display: flex;
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            animation: slideInSmooth 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes slideInSmooth {
+            from {
+                opacity: 0;
+                transform: translateX(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .nav-btn {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            font-weight: bold;
+        }
+
+        .modal.legit-yellow .nav-btn {
+            background: linear-gradient(45deg, #ffff7a, #ffcfc6);
+            box-shadow: 0 4px 15px rgba(255, 255, 153, 0.3);
+        }
+
+        .modal.legit-orange .nav-btn {
+            background: linear-gradient(45deg, #ffa02b, #caff4e);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        .modal.semi-rage-blue .nav-btn {
+            background: linear-gradient(45deg, #53baff, #6ef5ff);
+            box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+        }
+
+        .modal.semi-rage-red .nav-btn {
+            background: linear-gradient(45deg, #ff6c6c, #354351);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .modal.legit-yellow .nav-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 255, 153, 0.4);
+        }
+
+        .modal.legit-orange .nav-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+        }
+
+        .modal.semi-rage-blue .nav-btn:hover {
+            box-shadow: 0 6px 20px rgba(0, 153, 255, 0.4);
+        }
+
+        .modal.semi-rage-red .nav-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .gallery-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .modal.legit-yellow .indicator.active {
+            background: #ffff7c;
+            box-shadow: 0 0 10px rgba(255, 255, 153, 0.5);
+        }
+
+        .modal.legit-orange .indicator.active {
+            background: #ffaa41;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        }
+
+        .modal.semi-rage-blue .indicator.active {
+            background: #52baff;
+            box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+        }
+
+        .modal.semi-rage-red .indicator.active {
+            background: #ff4d4d;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .configs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .screenshot-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> ㅤ</h1>
+            <h2>ㅤ </h2>
+       
+            <p></p>
+        </div>
+
+        <div class="configs-grid">
+            <div class="config-card legit-yellow" onclick="openModal('legit-yellow')">
+                <div class="config-image">
+                    <img src="yellowlegit.png" alt="Legit Yellow Preview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="config-info">
+                    <div class="config-title">Legit (Yellow)</div>
+                    <div class="config-type">Legit configuration</div>
+                </div>
+            </div>
+
+            <div class="config-card legit-orange" onclick="openModal('legit-orange')">
+                <div class="config-image">
+                    <img src="orangelegit.png" alt="Legit Orange Preview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="config-info">
+                    <div class="config-title">Legit (Orange)</div>
+                    <div class="config-type">Legit configuration</div>
+                </div>
+            </div>
+
+            <div class="config-card semi-rage-blue" onclick="openModal('semi-rage-blue')">
+                <div class="config-image">
+                    <img src="bluesemi.png" alt="Semi-Rage Blue Preview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="config-info">
+                    <div class="config-title">Semi-Rage (Blue)</div>
+                    <div class="config-type">Semi-Rage configuration</div>
+                </div>
+            </div>
+
+            <div class="config-card semi-rage-red" onclick="openModal('semi-rage-red')">
+                <div class="config-image">
+                    <img src="redsemi.png" alt="Semi-Rage Red Preview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="config-info">
+                    <div class="config-title">Semi-Rage (Red)</div>
+                    <div class="config-type">Semi-Rage configuration</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="configModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Config Name</h2>
+                <p id="modalDescription">Config Description</p>
+            </div>
+
+            <div class="screenshot-gallery">
+                <div class="screenshot-container">
+                    <div class="screenshot active" id="screenshot1">
+                        <img src="screenshot1.png" alt="Screenshot 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="screenshot" id="screenshot2">
+                        <img src="screenshot2.png" alt="Screenshot 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="screenshot" id="screenshot3">
+                        <img src="screenshot3.png" alt="Screenshot 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                </div>
+                
+                <div class="gallery-nav">
+    <button class="nav-btn" onclick="previousScreenshot()"> < </button>
+    <button class="nav-btn copy-btn" onclick="copyConfigCode()">Copy Code</button>
+    <button class="nav-btn" onclick="nextScreenshot()"> > </button>
+</div>
+                
+                <div class="gallery-indicators">
+                    <span class="indicator active" onclick="goToScreenshot(0)"></span>
+                    <span class="indicator" onclick="goToScreenshot(1)"></span>
+                    <span class="indicator" onclick="goToScreenshot(2)"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentScreenshot = 0;
+        let currentConfig = '';
+        let autoSlideInterval;
+
+        const configs = {
+    'legit-yellow': {
+        title: 'Legit (Yellow)',
+        description: 'Premium legit configuration in bright yellow color scheme',
+        type: 'Legit',
+        screenshots: [
+            "yellowlegit.png",
+            "yellowlegit1.png",
+            "yellowlegit2.png"
+        ],
+        code: "bind mouse1 +attack\nbind mouse2 +attack2\nmp_autokick 0\nsv_cheats 1\n// Yellow Legit Config Code Here"
+    },
+    'legit-orange': {
+        title: 'Legit (Orange)',
+        description: 'Stylish legit configuration with orange and bright green',
+        type: 'Legit',
+        screenshots: [
+            "orangelegit.png",
+            "orangelegit1.png",
+            "orangelegit2.png"
+        ],
+        code: "bind mouse1 +attack\nbind mouse2 +attack2\nmp_autokick 0\nsv_cheats 1\n// Orange Legit Config Code Here"
+    },
+    'semi-rage-blue': {
+        title: 'Semi-Rage (Blue)',
+        description: 'Powerful semi-rage configuration with blue and cyan',
+        type: 'Semi-Rage',
+        screenshots: [
+            "bluesemi.png",
+            "bluesemi1.png",
+            "bluesemi2.png"
+        ],
+        code: "bind mouse1 +attack\nbind mouse2 +attack2\nmp_autokick 0\nsv_cheats 1\n// Blue Semi-Rage Config Code Here"
+    },
+    'semi-rage-red': {
+        title: 'Semi-Rage (Red)',
+        description: 'Aggressive semi-rage configuration with red and dark accent',
+        type: 'Semi-Rage',
+        screenshots: [
+            "redsemi.png",
+            "redsemi1.png",
+            "redsemi2.png"
+        ],
+        code: "bind mouse1 +attack\nbind mouse2 +attack2\nmp_autokick 0\nsv_cheats 1\n// Red Semi-Rage Config Code Here"
+    }
+};
+
+        function openModal(configId) {
+            currentConfig = configId;
+            const config = configs[configId];
+            
+            const modal = document.getElementById('configModal');
+            modal.className = 'modal ' + configId;
+            
+            document.getElementById('modalTitle').textContent = config.title;
+            document.getElementById('modalDescription').textContent = config.description;
+            
+            // Update screenshots for the selected config
+            const screenshots = document.querySelectorAll('.screenshot');
+            screenshots.forEach((screenshot, index) => {
+                const img = screenshot.querySelector('img');
+                if (img && config.screenshots[index]) {
+                    img.src = config.screenshots[index];
+                    img.alt = `${config.title} - Screenshot ${index + 1}`;
+                }
+            });
+            
+            // Reset screenshot gallery
+            currentScreenshot = 0;
+            updateScreenshots();
+            
+            modal.style.display = 'flex';
+            
+            // Start auto-slide
+            startAutoSlide();
+            
+            // Add ripple effect
+            addRippleEffect(event);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('configModal');
+            modal.classList.add('closing');
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modal.classList.remove('closing');
+                modal.className = 'modal';
+            }, 300);
+            
+            stopAutoSlide();
+        }
+
+        function updateScreenshots() {
+            const screenshots = document.querySelectorAll('.screenshot');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            screenshots.forEach((screenshot, index) => {
+                screenshot.classList.toggle('active', index === currentScreenshot);
+            });
+            
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentScreenshot);
+            });
+        }
+
+        function nextScreenshot() {
+            currentScreenshot = (currentScreenshot + 1) % 3;
+            updateScreenshots();
+            resetAutoSlide();
+        }
+
+        function previousScreenshot() {
+            currentScreenshot = (currentScreenshot - 1 + 3) % 3;
+            updateScreenshots();
+            resetAutoSlide();
+        }
+
+        function goToScreenshot(index) {
+            currentScreenshot = index;
+            updateScreenshots();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                nextScreenshot();
+            }, 2500);
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+            }
+        }
+
+        function resetAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+
+        function addRippleEffect(e) {
+            const card = e.currentTarget;
+            const ripple = document.createElement('span');
+            const rect = card.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            card.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+function copyConfigCode() {
+    const config = configs[currentConfig];
+    if (config && config.code) {
+        navigator.clipboard.writeText(config.code).then(() => {
+            // Visual feedback
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = 'linear-gradient(45deg, #2196F3, #1976D2)';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
+        }).catch(() => {
+            alert('Failed to copy code to clipboard');
+        });
+    }
+}
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('configModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('configModal');
+            if (modal.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    previousScreenshot();
+                } else if (e.key === 'ArrowRight') {
+                    nextScreenshot();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
